@@ -1,0 +1,7 @@
+{% extends "blogauth/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<h2>{{notification.title}}</h2>
+<p>{{notification.message}}</p>
+<a href="#">Mark as read</a>
+{% endblock %}
