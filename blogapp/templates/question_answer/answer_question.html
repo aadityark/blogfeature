@@ -1,0 +1,33 @@
+{% extends "blogauth/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+
+  <div class="container">     
+    <div class="jumbotron">    
+        <h2><strong>Question/Answer</strong></h2>
+        <h3>{{question.title}}</h3>
+        <p>{{ question.slug|linebreaksbr }}</p>  
+        <h6>{{question.group}}</h6> 
+        {% for answer in answers %}
+        <div class="well">
+                <i>Answered By :</i> {{answer.user}}
+                <p>{{answer.answer_text}}</p>
+            </div>
+         {% empty %}
+         <p>No one answered yet!</p>                   
+        {% endfor %}
+        <div class="alert alert-info">
+                <h3><strong>Give your answer</strong></h3>
+                <form enctype="multipart/form-data" method="POST" >
+                    {% csrf_token %}
+                    {{ answer_form.as_p }}
+                    <input type="submit" name="" class="save btn btn-default" value="Post">
+                  </form>
+         </div>
+     
+
+        
+
+    </div>
+  </div>
+{% endblock %}
